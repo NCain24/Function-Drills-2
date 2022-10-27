@@ -7,6 +7,9 @@
 
 // CODE HERE
 
+function multiply(num1, num2, cb) {
+  return cb(num1 * num2)
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
@@ -37,6 +40,9 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 
 // CODE HERE 
 
+const first = (arr, cb) => cb(arr[0])
+
+
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
@@ -56,6 +62,9 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
+
+const last = (arr, cb) => cb(arr.slice(-1))
+
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
@@ -78,6 +87,11 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE 
+
+function contains(arr, name, cb) {
+   let status = arr.includes(name)
+    status === true ? cb(true) : cb(false)
+}
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
@@ -104,6 +118,20 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 
 // CODE HERE
 
+function uniq(arr, cb) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] === arr[j]) {
+        arr.splice(j, 1)
+        j--
+      }
+    }
+  }
+  return cb(arr)
+}
+
+
+
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
   The callback function should take in one parameter called uniqArr.
@@ -112,6 +140,14 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
+
+
+
+// uniq(names, function(uniqArr){
+//   console.log(`The new names array with all the duplicate items removed is ${uniqArr}`)
+// })
+
+
 
 
 
@@ -124,6 +160,10 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 
 // CODE HERE 
 
+const each = (arr, cb) => {
+  arr.forEach((el, index) => cb(el, index))
+}
+
 
 /*
   Invoke the each function, passing in the names array and a callback function.
@@ -133,6 +173,10 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
+
+// each(names, function(item, index) {
+//   console.log(`The item at index ${index} is ${item}`)
+// })
 
 
 ////////// PROBLEM 7 //////////
@@ -167,6 +211,14 @@ var users = [
 
 // CODE HERE 
 
+const getUserById = (arr, id, cb) => {
+  for (let i = 0; i < arr.length; i++) {
+    if(arr[i].id === id) {
+      return cb(arr[i])
+    }
+  }
+}
+
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
@@ -194,6 +246,8 @@ var users = [
 
 // CODE HERE
 
+const addingFactory = (num1) => (num2) => num1 + num2
+
 /*
   Now that you have addingFactory, you can create other
   functions from it. 
@@ -208,6 +262,8 @@ var users = [
 
 // CODE HERE
 
+const addTen = addingFactory(10)
+
 /*
   Now the inner function is stored in the addTen variable! 
 
@@ -219,6 +275,8 @@ var users = [
 */
 
 // CODE HERE
+
+// console.log(addTen(4))
 
 /*
   Let's make another function from the addingFactory. 
@@ -232,3 +290,6 @@ var users = [
 */
 
 // CODE HERE
+
+const addNUMBER = addingFactory(24)
+console.log(addNUMBER(5))
